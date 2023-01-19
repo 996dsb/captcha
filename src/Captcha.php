@@ -344,6 +344,8 @@ class Captcha
         }
 
         $hash = $this->hasher->make($key);
+        $hash = str_replace('.','',$hash);
+
         if($this->encrypt) $hash = Crypt::encrypt($hash);
 
         $this->session->put('captcha', [
